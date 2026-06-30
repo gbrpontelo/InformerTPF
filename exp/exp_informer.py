@@ -103,7 +103,9 @@ class Exp_Informer(Exp_Basic):
         return data_set, data_loader
 
     def _select_optimizer(self):
-        model_optim = optim.Adam(self.model.parameters(), lr=self.args.learning_rate)
+        model_optim = torch.optim.AdamW(self.model.parameters(), 
+                                 lr=self.args.learning_rate,
+                                 weight_decay=1e-4)
         return model_optim
     
     def _select_criterion(self):
@@ -137,6 +139,13 @@ class Exp_Informer(Exp_Basic):
         early_stopping = EarlyStopping(patience=self.args.patience, verbose=True)
         
         model_optim = self._select_optimizer()
+
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+            model_optim,
+            T_max=self.args.train_epochs,
+            eta_min=1e-6
+        )
+
         criterion =  self._select_criterion()
 
         if self.args.use_amp:
@@ -185,7 +194,8 @@ class Exp_Informer(Exp_Basic):
                 print("Early stopping")
                 break
 
-            adjust_learning_rate(model_optim, epoch+1, self.args)
+            # adjust_learning_rate(model_optim, epoch+1, self.args)
+            scheduler.step()
             
         best_model_path = path+'/'+'checkpoint.pth'
         self.model.load_state_dict(torch.load(best_model_path))
