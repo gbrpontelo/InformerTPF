@@ -1,3 +1,8 @@
+# Modificações para o trabalho final de Redes Neurais
+
+Para executar o Informer modificado basta abrir o .ipynb que está no .zip enviado na entrega 
+
+
 # Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)
 ![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg?style=plastic)
 ![PyTorch 1.2](https://img.shields.io/badge/PyTorch%20-%23EE4C2C.svg?style=plastic)
