@@ -1,6 +1,6 @@
 # Modificações para o trabalho final de Redes Neurais
 
-Para executar o Informer modificado basta abrir o .ipynb que está no .zip enviado na entrega 
+Para executar o Informer modificado basta abrir o .ipynb no colab e executar, o arquivo .ipynb está no .zip enviado no moodle da entrega 
 
 
 # Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)
